@@ -45,3 +45,33 @@
 .network-form.warn .network-form-warning {
 	display: block;
 }
+
+/* NETWORK BUTTON */
+
+.network-button {
+}
+
+.network-button-icon {
+	position: relative;
+}
+
+.network-button-icon::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+[data-state='failed'] .network-button-icon *,
+[data-state='loading'] .network-button-icon * {
+	visibility: hidden;
+}
+
+[data-state='loading'] .network-button-icon::after {
+	animation: spin 600ms linear infinite;
+	background-size: cover;
+	background-position: center;
+	background-image: url('../../assets/labels/spinner.svg');
+}

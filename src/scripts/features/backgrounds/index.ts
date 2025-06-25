@@ -21,6 +21,7 @@ import type { Background, BackgroundImage, BackgroundVideo, Frequency } from '..
 import type { Backgrounds, Sync } from '../../../types/sync.ts'
 import type { Local } from '../../../types/local.ts'
 import { networkForm } from '../../shared/form.ts'
+import { networkButton } from '../../shared/input.ts'
 
 type BackgroundSize = 'full' | 'medium' | 'small'
 
@@ -49,6 +50,7 @@ const colorUpdateDebounce = debounce(solidUpdate, 600)
 const fadeinPreviewDebounce = debounce(previewFadein, 200)
 let fadeinTimeout = 0
 
+const refreshButton = networkButton('i_refresh')
 const formBackgroundUserColl = networkForm('f_background-user-coll')
 const formBackgroundUserSearch = networkForm('f_background-user-search')
 
@@ -154,7 +156,7 @@ export async function backgroundUpdate(update: BackgroundUpdate): Promise<void> 
 	if (update.refresh) {
 		local.backgroundLastChange = new Date(0).toString()
 		backgroundsInit(data, local)
-		turnRefreshButton(update.refresh, true)
+		refreshButton.load()
 	}
 
 	if (update.color) {
