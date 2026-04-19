@@ -271,7 +271,16 @@ queueMicrotask(() => {
         }, 500)
 
         document?.addEventListener('touchstart', (event) => {
-            handleLongPress(event)
+			const touchY = event.touches[0].clientY
+			const windowHeight = globalThis.innerHeight
+
+			const threshold = windowHeight * 0.95
+
+			// only continues with the long press if the user has started the swipe in the top 95% of the window height
+			// otherwise it would trigger the context menu when switching apps on iPad
+			if (touchY < threshold) {
+				handleLongPress(event)
+			} 
         })
 
         document?.addEventListener('touchend', () => {
