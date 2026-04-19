@@ -682,7 +682,7 @@ function createImageItem(src: string, media: BackgroundImage, callback?: () => v
 
         div?.classList.toggle('pixelated', isPng && isSmall)
         backgroundsWrapper?.classList.remove('hidden')
-        applySafariThemeColor(media, img)
+        applyThemeColor(media, img)
         updateCredits(media)
 
         if (callback) {
@@ -994,14 +994,14 @@ function detectBackgroundSize(): 'full' | 'small' {
     return document.body.className.includes('blurred') ? 'small' : 'full'
 }
 
-function applySafariThemeColor(image: BackgroundImage, img: HTMLImageElement): void {
+function applyThemeColor(image: BackgroundImage, img: HTMLImageElement): void {
     let color = image.color
 
-    if (BROWSER === 'safari' && !color) {
+    if (!color) {
         color = getAverageColor(img)
     }
 
-    if (BROWSER === 'safari' && color) {
+    if (color) {
         const fadein = Number.parseInt(document.documentElement.style.getPropertyValue('--fade-in'))
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color)
 
