@@ -233,6 +233,13 @@ queueMicrotask(() => {
         closeContextMenu()
     })
 
+	// closes context menu when moving to other tab/window
+	document.addEventListener('visibilitychange', () => {
+		if (document.visibilityState === 'hidden') {
+			closeContextMenu()
+		}
+	})
+
     // Update spans next to file inputs on value change
     domdialog.querySelectorAll<HTMLInputElement>('input[type="file"]')?.forEach((input) => {
         input.addEventListener('change', function (this): void {
