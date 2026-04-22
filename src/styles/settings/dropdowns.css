@@ -150,7 +150,7 @@
 }
 
 #pomodoro_options.shown {
-    max-height: 250px;
+    max-height: 363px;
 }
 
 /* Dropdowns: Settings management Options */
@@ -243,7 +243,7 @@
 }
 
 .all .as_pomodoro {
-    max-height: 190px;
+    max-height: 303px;
 }
 
 .all .as_greetings {
