@@ -17,7 +17,6 @@ import { daylightPeriod, needsChange, userDate } from '../../shared/time.ts'
 import { networkForm } from '../../shared/form.ts'
 import { rgbToHex } from '../../shared/generic.ts'
 import { debounce } from '../../utils/debounce.ts'
-import { BROWSER } from '../../defaults.ts'
 import { storage } from '../../storage.ts'
 
 import type { Background, BackgroundImage, BackgroundVideo, Frequency } from '../../../types/shared.ts'
